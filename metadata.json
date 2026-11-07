@@ -1,0 +1,6 @@
+{
+  "name": "Checkpoint - Intelligent Brand Governance Platform",
+  "description": "Pre-publication brand governance platform preventing brand inconsistency, unsupported claims, and outdated facts with AI explainability and a Guideline Clarity Heatmap.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
