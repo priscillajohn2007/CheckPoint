@@ -1,4 +1,4 @@
-import { ApprovedFact, BrandRule, ContentSubmission, AuditLogEntry } from '../types';
+import type { ApprovedFact, BrandRule, ContentSubmission, AuditLogEntry, SlackNotification, BrandHealthMetrics } from '../types/index.ts';
 
 export const INITIAL_FACTS: ApprovedFact[] = [
   {
@@ -100,6 +100,19 @@ export const INITIAL_RULES: BrandRule[] = [
       repeatFlagsCount: 67,
       trend: 'rising'
     },
+    currentVersion: 'v1.0',
+    versions: [
+      {
+        version: 'v1.0',
+        timestamp: '2026-08-15T09:00:00Z',
+        author: 'Sarah Chen',
+        authorRole: 'VP Brand',
+        title: 'Superlative & Rank Claims ("#1", "Fastest", "Best")',
+        description: 'Never use unsubstantiated superlative or comparative ranking claims (e.g., "#1 delivery app", "fastest", "cheapest") without an accredited external industry audit certificate cited by name (ASCI Guidelines 2025-26 & CCPA 2022).',
+        changeSummary: 'Initial policy baseline following legal consultation.',
+        confusionScoreAtVersion: 88
+      }
+    ],
     originalWording: 'Staff should avoid excessive boasting or subjective superlatives unless certified by external marketing board standards.',
     aiSuggestedRewrite: 'Never state "#1", "Fastest", "Best", or "Leading" without citing an official third-party audit report by name in the same sentence. When citing delivery speed, always state the exact audited figure: "Our average delivery time is 25 minutes (Source: Q3 Operations Report)".',
     rewriteReason: 'Original rule used ambiguous terms ("avoid excessive boasting"). Creators frequently dismissed flags believing their phrasing was acceptable.',
@@ -115,6 +128,19 @@ export const INITIAL_RULES: BrandRule[] = [
     forbiddenExamples: ['100% guaranteed 10-minute delivery', 'Guaranteed hot or your money back', 'Zero chance of cancellation'],
     preferredAlternatives: ['We strive for rapid delivery with real-time tracking', 'Live courier tracking with on-time commitment'],
     requiresLegal: true,
+    currentVersion: 'v1.0',
+    versions: [
+      {
+        version: 'v1.0',
+        timestamp: '2026-07-20T10:00:00Z',
+        author: 'Marcus Vance',
+        authorRole: 'Legal Counsel',
+        title: 'Absolute Guarantees ("100% Guaranteed", "Never Late")',
+        description: 'Absolute performance guarantees ("100% guaranteed on time", "never cold", "zero delays") create strict consumer liability under CCPA (2022) and the Moffatt v. Air Canada (2024) misrepresentation precedent. Strict prohibition.',
+        changeSummary: 'Codified after Moffatt v. Air Canada liability case review.',
+        confusionScoreAtVersion: 74
+      }
+    ],
     heatmap: {
       confusionScore: 74,
       peopleAffected: 18,
@@ -389,3 +415,74 @@ export const INITIAL_AUDIT_LOGS: AuditLogEntry[] = [
     submissionId: 'sub-2'
   }
 ];
+
+export const INITIAL_SLACK_NOTIFICATIONS: SlackNotification[] = [
+  {
+    id: 'slack-1',
+    submissionId: 'sub-hackathon-demo',
+    submissionTitle: 'QuickBite Weekend Flash Campaign (Priya Draft)',
+    recipientChannel: '#legal-governance-approvals',
+    dispatchedAt: '2026-11-07T06:30:22Z',
+    status: 'pending',
+    riskLevel: 'high',
+    routeTo: 'legal_reviewer',
+    findingsCount: 5,
+    dispatchedBy: 'Checkpoint Webhook Service'
+  },
+  {
+    id: 'slack-2',
+    submissionId: 'sub-2',
+    submissionTitle: 'App Store Update Release Notes',
+    recipientChannel: '#marketing-approvals',
+    dispatchedAt: '2026-11-06T10:05:00Z',
+    status: 'approved',
+    riskLevel: 'routine',
+    routeTo: 'marketing_manager',
+    findingsCount: 0,
+    dispatchedBy: 'Checkpoint Webhook Service',
+    respondedBy: 'Marcus Vance (via Slack Action)',
+    respondedAt: '2026-11-06T11:45:00Z'
+  }
+];
+
+export const INITIAL_BRAND_HEALTH: BrandHealthMetrics = {
+  overallHealthScore: 92,
+  complianceRate: 88.5,
+  activeViolationsCaughtMonth: 142,
+  avgVelocityHours: 3.8,
+  historicalVelocityReduction: 78,
+  repeatFlagReductionRate: 55,
+  legalRiskExposureScore: 14,
+  departmentBreakdowns: [
+    {
+      department: 'Brand & Social Marketing',
+      submissionsCount: 68,
+      complianceScore: 91,
+      topFlaggedRule: 'Claims Policy 3.2 (#1 Superlatives)'
+    },
+    {
+      department: 'Growth & Performance Ads',
+      submissionsCount: 45,
+      complianceScore: 84,
+      topFlaggedRule: 'Promo Policy 4.3 (Expired Codes)'
+    },
+    {
+      department: 'Agency Partners & Freelancers',
+      submissionsCount: 32,
+      complianceScore: 78,
+      topFlaggedRule: 'Terminology Rule 2.1 (Users vs Customers)'
+    },
+    {
+      department: 'Product & Release Ops',
+      submissionsCount: 22,
+      complianceScore: 96,
+      topFlaggedRule: 'Visual Rule 1.2 (WCAG AA Contrast)'
+    }
+  ],
+  monthlyTrends: [
+    { month: 'Aug 2026', healthScore: 68, violationsIntercepted: 198, avgHoursToApprove: 46.2 },
+    { month: 'Sep 2026', healthScore: 75, violationsIntercepted: 174, avgHoursToApprove: 28.5 },
+    { month: 'Oct 2026', healthScore: 84, violationsIntercepted: 159, avgHoursToApprove: 12.4 },
+    { month: 'Nov 2026', healthScore: 92, violationsIntercepted: 142, avgHoursToApprove: 3.8 }
+  ]
+};

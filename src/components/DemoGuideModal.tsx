@@ -26,7 +26,7 @@ export const DemoGuideModal: React.FC<DemoGuideModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
       <div className="bg-white border border-slate-200 rounded-2xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl space-y-6 my-8">
-        {/* Header with Attribution from Slide 1 */}
+        {/* Header */}
         <div className="flex items-start justify-between border-b border-slate-100 pb-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-teal-800 uppercase tracking-wider">
@@ -49,7 +49,7 @@ export const DemoGuideModal: React.FC<DemoGuideModalProps> = ({
           </button>
         </div>
 
-        {/* 4-Step Core Flow (Slide 1) */}
+        {/* 4-Step Core Flow */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
           <div className="p-3 bg-teal-50 border border-teal-200 rounded-xl">
             <div className="w-6 h-6 rounded-full bg-teal-800 text-white flex items-center justify-center font-bold text-xs mx-auto mb-1">
@@ -81,10 +81,10 @@ export const DemoGuideModal: React.FC<DemoGuideModalProps> = ({
           </div>
         </div>
 
-        {/* The 8-Stage Engine Architecture (Slide 6) */}
+        {/* The 8-Stage Engine Architecture */}
         <div className="space-y-2">
           <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-            8-Stage Engine Architecture (Slide 6)
+            8-Stage Engine Architecture
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
             <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-lg">
@@ -140,7 +140,7 @@ export const DemoGuideModal: React.FC<DemoGuideModalProps> = ({
             >
               <div className="text-xs font-bold text-slate-900">1. Priya&apos;s Flash Draft</div>
               <p className="text-[11px] text-slate-600 mt-0.5">
-                Tests Slide 6 example: #1 claim, expired SUMMER2024 code, &ldquo;users&rdquo; term.
+                Tests sample campaign violations: #1 claim, expired SUMMER2024 code, &ldquo;users&rdquo; term.
               </p>
             </button>
 

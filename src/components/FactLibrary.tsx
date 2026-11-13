@@ -19,12 +19,14 @@ interface FactLibraryProps {
   facts: ApprovedFact[];
   onFactsUpdated: (facts: ApprovedFact[]) => void;
   currentRole: Role;
+  isDemoMode?: boolean;
 }
 
 export const FactLibrary: React.FC<FactLibraryProps> = ({
   facts,
   onFactsUpdated,
   currentRole,
+  isDemoMode = false,
 }) => {
   const [search, setSearch] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -178,7 +180,31 @@ export const FactLibrary: React.FC<FactLibraryProps> = ({
         </div>
       </div>
 
-      {/* Facts Grid */}
+      {/* Facts Grid or Empty State */}
+      {filteredFacts.length === 0 ? (
+        <div className="bg-white border border-slate-200 rounded-xl p-12 text-center shadow-xs space-y-3">
+          <div className="w-12 h-12 rounded-full bg-slate-100 text-teal-800 mx-auto flex items-center justify-center">
+            <Database className="w-6 h-6" />
+          </div>
+          <h3 className="text-base font-bold text-slate-900">
+            {facts.length === 0 ? 'No Approved Facts Added Yet' : 'No Matching Facts Found'}
+          </h3>
+          <p className="text-xs text-slate-500 max-w-md mx-auto">
+            {facts.length === 0
+              ? 'Add your organization’s verified metrics, active promo codes, and expiry dates so Checkpoint can cross-check posters and drafts against your own truth library.'
+              : 'Try adjusting your search query or status filter.'}
+          </p>
+          {facts.length === 0 && (
+            <button
+              onClick={() => setIsAddModalOpen(true)}
+              className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 bg-teal-800 hover:bg-teal-900 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Add First Approved Fact</span>
+            </button>
+          )}
+        </div>
+      ) : (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredFacts.map((fact) => (
           <div
@@ -248,6 +274,7 @@ export const FactLibrary: React.FC<FactLibraryProps> = ({
           </div>
         ))}
       </div>
+      )}
 
       {/* Add Fact Modal */}
       {isAddModalOpen && (
